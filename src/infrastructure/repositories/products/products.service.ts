@@ -1,8 +1,15 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Products } from 'src/domain/repositories/products/products.interface';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class ProductsService {
-    getAll() : string {
-        return 'The products is empty. Please created products in the Database.'
+    constructor(
+        @InjectRepository(Products)
+        private productsRepository: Repository<Products>
+    ){}
+    getAll() : Promise<Products[]> {
+        return this.productsRepository.find();
     }
 }
