@@ -6,6 +6,7 @@ import { ProductsModule } from './domain/modules/products/products.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Products } from './domain/repositories/products/products.interface';
 import { Categories } from './domain/repositories/categories/categories.interface';
+import { ProductsSupplier } from './domain/repositories/products/productsSupplier.interface';
 
 @Module({
   imports: [CategoriesModule, ProductsModule, TypeOrmModule.forRoot({
@@ -15,7 +16,7 @@ import { Categories } from './domain/repositories/categories/categories.interfac
     username: 'rtProducts',
     password: 'rtProducts',
     database: 'DB-ERP-PRODUCTS',
-    entities: [Products, Categories],
+    entities: [Products, Categories, ProductsSupplier],
     synchronize: true
   })],
   controllers: [AppController],
