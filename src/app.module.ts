@@ -7,6 +7,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Products } from './domain/repositories/products/products.interface';
 import { Categories } from './domain/repositories/categories/categories.interface';
 import { ProductsSupplier } from './domain/repositories/products/productsSupplier.interface';
+import { Categories } from './infrastructure/repositories/categories/categories.suscriber';
+import { Products } from './infrastructure/repositories/products/products.suscriber';
 
 @Module({
   imports: [CategoriesModule, ProductsModule, TypeOrmModule.forRoot({
@@ -20,6 +22,6 @@ import { ProductsSupplier } from './domain/repositories/products/productsSupplie
     synchronize: true
   })],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, Categories, Products],
 })
 export class AppModule {}
